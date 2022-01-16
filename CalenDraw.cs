@@ -107,7 +107,7 @@ namespace CalenTrack {
 				var borderPen = new Pen(Color.White);
 				var borderPen2 = new Pen(Color.Black);
 				var selectPen = new Pen(Color.Black);
-				var selectBrush = new SolidBrush(Color.FromArgb(0x600086F4));//new TextureBrush(selectFill);
+				var selectBrush = new SolidBrush(Color.White);//new TextureBrush(selectFill); 0x600086F4
 				var font = new Font("Verdana", 10);
 				var fontBrush = new SolidBrush(Color.Black);
 				var currHour = CalenCore.startTime.Hour;
