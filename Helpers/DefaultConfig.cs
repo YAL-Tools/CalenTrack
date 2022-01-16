@@ -13,10 +13,11 @@ scale=6
 timeTillIdle=60
 idleAlpha=0.7
 hourStyle=24
-timeTillBreak=2400
+timeTillBreak=0
 breakTime=180
 breakText=Take a break!
 breakTaskbarKind=error
+autosaveInterval=300
 
 [colors]
 section=#000000

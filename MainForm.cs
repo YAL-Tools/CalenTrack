@@ -197,6 +197,10 @@ namespace CalenTrack {
 			openSessionDialog.ShowDialog();
 		}
 
+		private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
+			if (tickTimer.Enabled) CalenState.save();
+		}
+
 		private void firstUpdate_Tick(object sender, EventArgs e) {
 			if (CalenCore.config == null) return;
 			CalenCore.timerTickPost();

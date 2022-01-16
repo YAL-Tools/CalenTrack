@@ -89,6 +89,10 @@ namespace CalenTrack {
 			add(appid);
 			if (hasFocus) {
 				CalenDraw.redraw(updateTimeView);
+			}
+			if (config.autosaveInterval > 0 && DateTime.Now.Subtract(CalenState.lastSaveAt).TotalSeconds > config.autosaveInterval) {
+				CalenState.lastSaveAt = DateTime.Now;
+				Console.WriteLine("Auto-saving...");
 				CalenState.save();
 			}
 		}

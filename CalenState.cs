@@ -15,6 +15,7 @@ namespace CalenTrack {
 		public string type = "CalenTrack:state";
 		public int version = 1000;
 		public DateTime startTime;
+		public static DateTime lastSaveAt;
 		public List<CalenAppState> apps = new List<CalenAppState>();
 		CalenState() { }
 
@@ -50,6 +51,7 @@ namespace CalenTrack {
 		}
 		public static void load(string name = "state") {
 			var state = JsonConvert.DeserializeObject<CalenState>(File.ReadAllText(name + ".json"));
+			lastSaveAt = DateTime.Now;
 			CalenCore.startTime = state.startTime;
 			CalenApp.clear();
 			var config = CalenCore.config;

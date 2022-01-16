@@ -17,6 +17,7 @@ namespace CalenTrack {
 		public bool use24hourTime = true;
 		public int scale = 2;
 		public int timeTillIdle = 60;
+		public int autosaveInterval = 300;
 		public double timeTillBreak = 0;
 		public double breakTime = 0;
 		public string breakText = "Take a break!";
@@ -97,6 +98,7 @@ namespace CalenTrack {
 				case "hourstyle": use24hourTime = val.Trim() != "12"; break;
 				case "scale": parseInt(val, out scale); break;
 				case "timetillidle": parseInt(val, out timeTillIdle); break;
+				case "autosaveinterval": parseInt(val, out autosaveInterval); break;
 				case "idlealpha": parseFloat(val, out ColorHelper.idleAlpha); break;
 				case "timetillbreak": parseFloat(val, out timeTillBreak); break;
 				case "breaktime": parseFloat(val, out breakTime); break;
