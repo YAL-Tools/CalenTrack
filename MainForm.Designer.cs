@@ -41,13 +41,15 @@ namespace CalenTrack {
 			this.mainPanel = new System.Windows.Forms.Panel();
 			this.tickTimer = new System.Windows.Forms.Timer(this.components);
 			this.firstUpdate = new System.Windows.Forms.Timer(this.components);
+			this.openSessionDialog = new System.Windows.Forms.OpenFileDialog();
 			this.canvas = new System.Windows.Forms.PictureBox();
 			this.btNew = new System.Windows.Forms.ToolStripButton();
+			this.btOpen = new System.Windows.Forms.ToolStripButton();
 			this.btEditConfig = new System.Windows.Forms.ToolStripButton();
 			this.btReloadConfig = new System.Windows.Forms.ToolStripButton();
 			this.btRefresh = new System.Windows.Forms.ToolStripButton();
-			this.btAddMarker = new System.Windows.Forms.ToolStripButton();
 			this.btEndBreak = new System.Windows.Forms.ToolStripButton();
+			this.btAddMarker = new System.Windows.Forms.ToolStripButton();
 			this.sidePanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.maxAppRows)).BeginInit();
 			this.toolStrip1.SuspendLayout();
@@ -117,6 +119,7 @@ namespace CalenTrack {
 			this.toolStrip1.BackColor = System.Drawing.SystemColors.Control;
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btNew,
+            this.btOpen,
             this.toolStripSeparator1,
             this.btEditConfig,
             this.btReloadConfig,
@@ -180,6 +183,12 @@ namespace CalenTrack {
 			this.firstUpdate.Interval = 50;
 			this.firstUpdate.Tick += new System.EventHandler(this.firstUpdate_Tick);
 			// 
+			// openSessionDialog
+			// 
+			this.openSessionDialog.FileName = "openSessionDialog";
+			this.openSessionDialog.Filter = "CalenTrack sessions|*.appids";
+			this.openSessionDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openSessionDialog_FileOk);
+			// 
 			// canvas
 			// 
 			this.canvas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -202,6 +211,16 @@ namespace CalenTrack {
 			this.btNew.Size = new System.Drawing.Size(23, 22);
 			this.btNew.Text = "New session";
 			this.btNew.Click += new System.EventHandler(this.btNew_Click);
+			// 
+			// btOpen
+			// 
+			this.btOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.btOpen.Image = global::CalenTrack.Properties.Resources.folder_page;
+			this.btOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.btOpen.Name = "btOpen";
+			this.btOpen.Size = new System.Drawing.Size(23, 22);
+			this.btOpen.Text = "View a saved session";
+			this.btOpen.Click += new System.EventHandler(this.toolStripButton1_Click);
 			// 
 			// btEditConfig
 			// 
@@ -233,6 +252,16 @@ namespace CalenTrack {
 			this.btRefresh.Text = "Refresh";
 			this.btRefresh.Click += new System.EventHandler(this.btRefresh_Click);
 			// 
+			// btEndBreak
+			// 
+			this.btEndBreak.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.btEndBreak.Image = global::CalenTrack.Properties.Resources.accept;
+			this.btEndBreak.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.btEndBreak.Name = "btEndBreak";
+			this.btEndBreak.Size = new System.Drawing.Size(23, 22);
+			this.btEndBreak.Text = "End Break";
+			this.btEndBreak.Click += new System.EventHandler(this.btEndBreak_Click);
+			// 
 			// btAddMarker
 			// 
 			this.btAddMarker.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -242,16 +271,6 @@ namespace CalenTrack {
 			this.btAddMarker.Size = new System.Drawing.Size(23, 22);
 			this.btAddMarker.Text = "Add marker";
 			this.btAddMarker.Click += new System.EventHandler(this.btAddMarker_Click);
-			// 
-			// btEndBreak
-			// 
-			this.btEndBreak.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.btEndBreak.Image = global::CalenTrack.Properties.Resources.accept;
-			this.btEndBreak.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.btEndBreak.Name = "btEndBreak";
-			this.btEndBreak.Size = new System.Drawing.Size(23, 22);
-			this.btEndBreak.Text = "toolStripButton1";
-			this.btEndBreak.Click += new System.EventHandler(this.btEndBreak_Click);
 			// 
 			// MainForm
 			// 
@@ -303,6 +322,8 @@ namespace CalenTrack {
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 		private System.Windows.Forms.ToolStripLabel mouseLabel;
 		private System.Windows.Forms.ToolStripButton btEndBreak;
+		private System.Windows.Forms.ToolStripButton btOpen;
+		private System.Windows.Forms.OpenFileDialog openSessionDialog;
 	}
 }
 

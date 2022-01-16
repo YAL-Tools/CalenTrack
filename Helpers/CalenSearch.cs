@@ -15,6 +15,8 @@ namespace CalenTrack.Helpers {
 		static Regex rxRuleRes = new Regex("\\$(t|p)(\\d+)");
 
 		public static uint GetCurrent(double dt, out bool hasFocus) {
+			var config = CalenCore.config;
+
 			var hwnd = Win32.GetForegroundRootWindow();
 			hasFocus = hwnd == MainForm.inst.Handle;
 			string path;
@@ -33,7 +35,6 @@ namespace CalenTrack.Helpers {
 			// patches here
 			CalenApp app = null;
 			ConfigRule matchedRule = null;
-			var config = CalenCore.config;
 			foreach (var rule in config.rules) {
 				if (rule.incPath != null && !path.Contains(rule.incPath)) continue;
 				if (rule.incTitle != null && !title.Contains(rule.incTitle)) continue;

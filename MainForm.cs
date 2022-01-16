@@ -59,7 +59,7 @@ namespace CalenTrack {
 
 		private void btNew_Click(object sender, EventArgs e) {
 			if (CalenCore.lastTick > 15 * 60) {
-				switch (MessageBox.Show("Save the current session and start a new one?", Text, MessageBoxButtons.YesNoCancel)) {
+				switch (MessageBox.Show("Save the current session before starting a new one?", Text, MessageBoxButtons.YesNoCancel)) {
 					case DialogResult.Yes:
 						if (!Directory.Exists("sessions")) Directory.CreateDirectory("sessions");
 						CalenState.save("sessions/" + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss"));
@@ -184,7 +184,21 @@ namespace CalenTrack {
 			}
 		}
 
+		private void openSessionDialog_FileOk(object sender, CancelEventArgs e) {
+			tickTimer.Enabled = false;
+			var path = openSessionDialog.FileName;
+			var dot = path.LastIndexOf(".");
+			path = path.Substring(0, dot);
+			CalenState.load(path);
+			CalenDraw.redraw();
+		}
+
+		private void toolStripButton1_Click(object sender, EventArgs e) {
+			openSessionDialog.ShowDialog();
+		}
+
 		private void firstUpdate_Tick(object sender, EventArgs e) {
+			if (CalenCore.config == null) return;
 			CalenCore.timerTickPost();
 			firstUpdate.Enabled = false;
 		}

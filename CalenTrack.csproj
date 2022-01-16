@@ -112,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CalenTrack.ico" />
+    <None Include="Resources\folder_page.png" />
     <None Include="Resources\accept.png" />
     <None Include="Resources\star.png" />
     <None Include="Resources\arrow_refresh.png" />
