@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Globalization;
 
 namespace CalenTrack {
 	public class Config {
@@ -70,7 +71,7 @@ namespace CalenTrack {
 			if (!int.TryParse(val, out target)) error("Could not parse int value", val);
 		}
 		private void parseFloat(string val, out double target) {
-			if (!double.TryParse(val, out target)) error("Could not parse int value", val);
+			if (!double.TryParse(val, NumberStyles.Number, CultureInfo.InvariantCulture, out target)) error("Could not parse float value", val);
 		}
 		public bool parseColor(string val, out Color result) {
 			var z = ColorHelper.TryParse(val, out result);
