@@ -96,7 +96,7 @@ namespace CalenTrack {
 		private void loadMain(string key, string val) {
 			switch (key) {
 				case "hourstyle": use24hourTime = val.Trim() != "12"; break;
-				case "scale": parseInt(val, out scale); break;
+				case "scale": parseInt(val, out CalenDraw.scale); break;
 				case "timetillidle": parseInt(val, out timeTillIdle); break;
 				case "autosaveinterval": parseInt(val, out autosaveInterval); break;
 				case "idlealpha": parseFloat(val, out ColorHelper.idleAlpha); break;
