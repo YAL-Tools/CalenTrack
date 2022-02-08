@@ -86,7 +86,6 @@ namespace CalenTrack {
 			} else return null;
 		}
 
-		static Image selectFill = Bitmap.FromFile("diag.png");
 		public static void redraw(bool updateTimeView = true) {
 			var bitmap = ensureSize();
 
