@@ -50,7 +50,7 @@ namespace CalenTrack {
 
 			tickTimer.Interval = (int)(CalenHour.tickRate * 0.7);
 			tickTimer.Start();
-			CalenState.load();
+			if (File.Exists("state.json")) CalenState.load();
 		}
 
 		private void tickTimer_Tick(object sender, EventArgs e) {
